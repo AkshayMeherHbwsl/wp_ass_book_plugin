@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -156,7 +155,8 @@ class Wp_Book {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		// action hook for custom post type Book'.
+		$this->loader->add_action( 'init', $plugin_admin, 'wp_book_custom_post_type_book' );
 	}
 
 	/**

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -44,13 +43,13 @@ class Wp_Book_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -100,4 +99,52 @@ class Wp_Book_Admin {
 
 	}
 
+	/**
+	 * Register custom post type "book"
+	 */
+	public function wp_book_custom_post_type_book() {
+
+		$labels = array(
+			'name'               => __( 'Books', 'wp-book' ),
+			'singular_name'      => __( 'Book', 'wp-book' ),
+			'menu_name'          => __( 'Books', 'wp-book' ),
+			'name_admin_bar'     => __( 'Book', 'wp-book' ),
+			'add_new'            => __( 'Add New', 'wp-book' ),
+			'add_new_item'       => __( 'Add New Book', 'wp-book' ),
+			'new_item'           => __( 'New Book', 'wp-book' ),
+			'edit_item'          => __( 'Edit Book', 'wp-book' ),
+			'view_item'          => __( 'View Book', 'wp-book' ),
+			'all_items'          => __( 'All Books', 'wp-book' ),
+			'search_items'       => __( 'Search Books', 'wp-book' ),
+			'parent_item_colon'  => __( 'Parent Books:', 'wp-book' ),
+			'not_found'          => __( 'No books found.', 'wp-book' ),
+			'not_found_in_trash' => __( 'No books found in Trash.', 'wp-book' ),
+		);
+
+		$args = array(
+			'labels'             => $labels,
+			'description'        => __( 'Description.', 'wp-book' ),
+			'public'             => true,
+			'menu_icon'          => 'dashicons-book',
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'book' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array(
+				'title',
+				'editor',
+				'author',
+				'thumbnail',
+				'excerpt',
+				'comments',
+			),
+		);
+
+		register_post_type( 'book', $args );
+	}
 }
