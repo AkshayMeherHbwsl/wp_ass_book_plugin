@@ -161,6 +161,9 @@ class Wp_Book {
 
 		// action hook for custom hierarchical taxanomy 'Book Category'.
 		$this->loader->add_action( 'init', $plugin_admin, 'wp_book_custom_category' );
+
+		// action hook for custom non hierachical taxanomy 'Book Tag'.
+		$this->loader->add_action( 'init', $plugin_admin, 'wp_book_custom_tag' );
 	}
 
 	/**
