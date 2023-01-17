@@ -42,7 +42,9 @@ define( 'WP_BOOK_VERSION', '1.0.0' );
  */
 function activate_wp_book() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-book-activator.php';
-	Wp_Book_Activator::activate();
+	$activator = new Wp_Book_Activator();
+	$activator->activate();
+	// Wp_Book_Activator::activate();.
 }
 
 /**
@@ -51,7 +53,8 @@ function activate_wp_book() {
  */
 function deactivate_wp_book() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-book-deactivator.php';
-	Wp_Book_Deactivator::deactivate();
+	$deactivator = new Wp_Book_Deactivator();
+	$deactivator->deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_wp_book' );
