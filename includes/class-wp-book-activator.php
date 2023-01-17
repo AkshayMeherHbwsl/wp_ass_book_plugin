@@ -32,7 +32,7 @@ class Wp_Book_Activator {
 		global $wpdb;
 		if ( $wpdb->get_var( "SHOW tables like '" . $this->wpb_bookmeta() . "'" ) != $this->wpb_bookmeta() ) {
 
-			// dynamic generate table
+			// dynamic generate table.
 			$table_query = 'CREATE TABLE `' . $this->wpb_bookmeta() . "` (  
 				`meta_id` bigint(20) NOT NULL AUTO_INCREMENT,  
 				`book_id` bigint(20) NOT NULL DEFAULT '0',  
@@ -47,6 +47,9 @@ class Wp_Book_Activator {
 		}
 	}
 
+	/**
+	 * Fuction.
+	 */
 	public function wpb_bookmeta() {
 		global $wpdb;
 		return $wpdb->prefix . 'bookmeta';

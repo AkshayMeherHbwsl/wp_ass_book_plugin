@@ -376,4 +376,40 @@ class Wp_Book_Admin {
 		update_metadata( 'post', $post_id, 'url', $url );
 
 	}
+
+	/**
+	 * Create a menu method.
+	 */
+	public function book_menu() {
+		add_menu_page( 'Booksmenu', 'Booksmenu', 'manage_options', 'Bookmenu', array( $this, 'book_dashboard' ), 'dashicons-book-alt', 76 );
+	}
+
+	/**
+	 * Menu "Bookmenu" callback function.
+	 */
+	public function book_dashboard(){
+		?>
+		<div class="wrap">
+			<h2>Book Settings</h2>
+			<p>Manages all the settings of book plugin</p>
+
+			<table class="form-table">
+				<tbody>
+					<tr>
+						<th scope="row"><label for="currency">Currency</label></th>
+						<td><input type="text" class="regular-text" name="currency" id="currency" placeholder="Currency"></td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="no_of_books">No. of Books (per page)</label></th>
+						<td><input type="text" class="regular-text" name="no_of_books" id="no_of_books" placeholder="No. of Books"></td>
+					</tr>
+					<tr>
+						<td><button class="button-primary">Save Settings</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<?php
+		echo ob_get_clean();
+	}
 }
